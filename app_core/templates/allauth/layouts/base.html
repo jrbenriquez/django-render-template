@@ -1,0 +1,94 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block head_title %}{% endblock head_title %}</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+
+    {% block extra_head %}{% endblock extra_head %}
+  </head>
+
+  <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col justify-center items-center px-4">
+    {% block body %}
+      {% if messages %}
+        <div class="w-full max-w-md mb-6">
+          <div class="rounded-md bg-blue-50 p-4 text-sm text-blue-800 border border-blue-200">
+            <strong class="block mb-1">{% trans "Messages:" %}</strong>
+            <ul class="list-disc list-inside space-y-1">
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-md space-y-6">
+        <div>
+          <h1 class="text-2xl font-semibold text-center">{% block title %}{% endblock title %}</h1>
+        </div>
+
+        <div>
+          {% block content %}{% endblock content %}
+        </div>
+
+        <div class="border-t pt-4 text-sm text-center text-gray-600">
+          <strong class="block mb-1">{% trans "Menu:" %}</strong>
+          <ul class="space-y-2">
+            {% if user.is_authenticated %}
+              {% url 'account_email' as email_url_ %}
+              {% if email_url_ %}
+                <li><a href="{{ email_url_ }}" class="text-blue-600 hover:underline">{% trans "Change Email" %}</a></li>
+              {% endif %}
+              {% url 'account_change_password' as change_password_url_ %}
+              {% if change_password_url_ %}
+                <li><a href="{{ change_password_url_ }}" class="text-blue-600 hover:underline">{% trans "Change Password" %}</a></li>
+              {% endif %}
+              {% url 'socialaccount_connections' as connections_url_ %}
+              {% if connections_url_ %}
+                <li><a href="{{ connections_url_ }}" class="text-blue-600 hover:underline">{% trans "Account Connections" %}</a></li>
+              {% endif %}
+              {% url 'mfa_index' as mfa_url_ %}
+              {% if mfa_url_ %}
+                <li><a href="{{ mfa_url_ }}" class="text-blue-600 hover:underline">{% trans "Two-Factor Authentication" %}</a></li>
+              {% endif %}
+              {% url 'usersessions_list' as usersessions_list_url_ %}
+              {% if usersessions_list_url_ %}
+                <li><a href="{{ usersessions_list_url_ }}" class="text-blue-600 hover:underline">{% trans "Sessions" %}</a></li>
+              {% endif %}
+              {% url 'account_logout' as logout_url_ %}
+              {% if logout_url_ %}
+                <li><a href="{{ logout_url_ }}" class="text-red-600 hover:underline">{% trans "Sign Out" %}</a></li>
+              {% endif %}
+            {% else %}
+              {% url 'account_login' as login_url_ %}
+              {% if login_url_ %}
+                <li><a href="{{ login_url_ }}" class="text-blue-600 hover:underline">{% trans "Sign In" %}</a></li>
+              {% endif %}
+              {% url 'account_signup' as signup_url_ %}
+              {% if signup_url_ %}
+                <li><a href="{{ signup_url_ }}" class="text-blue-600 hover:underline">{% trans "Sign Up" %}</a></li>
+              {% endif %}
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    {% endblock body %}
+
+    {% block extra_body %}{% endblock extra_body %}
+  </body>
+</html>
+
