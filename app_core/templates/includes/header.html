@@ -1,15 +1,20 @@
+{% load static %}
 {% load wagtailcore_tags navigation_tags %}
-
+{% get_site_root as site_root %}
 <header class="my-2">
-    {% get_site_root as site_root %}
     <center>
-      <nav>
-          <p>
-          <a href="{% pageurl site_root %}">Home</a>
-          {% for menuitem in site_root.get_children.live.in_menu %}
-          |   <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
-          {% endfor %}
-          </p>
-      </nav>
-  </center>
+        <header class="py-4 border-b">
+            <div class="container mx-auto flex justify-between items-center px-4">
+                <div class="flex items-center space-x-3 text-2xl font-bold">
+                    <img src="{% static 'img/icon.svg' %}"
+                         class="h-10 w-auto"
+                         alt="ZeroBadger logo" />
+                    <a href="{% pageurl site_root %}">ZeroBadger</a>
+                </div>
+                {% block navbar %}
+                    {% include 'includes/navbar.html' %}
+                {% endblock %}
+            </div>
+        </header>
+    </center>
 </header>

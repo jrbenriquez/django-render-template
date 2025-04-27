@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<!-- <div class="max-w-3xl mx-auto py-10 px-4"> -->
+<!--   <h1 class="text-4xl font-bold text-center mb-8">{{ page.title }}</h1> -->
+<!--   <div class="prose prose-lg mx-auto"> -->
+<!--     {% for block in page.body %} -->
+<!--       {% if block.block_type == 'heading' %} -->
+<!--         <h2 class="text-2xl font-bold mt-8">{{ block.value }}</h2> -->
+<!--       {% elif block.block_type == 'paragraph' %} -->
+<!--         <p class="mt-4">{{ block.value|richtext }}</p> -->
+<!--       {% elif block.block_type == 'rich_text' %} -->
+<!--         <div class="mt-4">{{ block.value|richtext }}</div> -->
+<!--       {% elif block.block_type == 'image' %} -->
+<!--         {% image block.value original class="rounded-lg shadow-lg my-6" %} -->
+<!--       {% elif block.block_type == 'code' %} -->
+<!--         <pre class="bg-gray-100 p-4 rounded-md overflow-auto my-6 text-sm"><code>{{ block.value }}</code></pre> -->
+<!--       {% endif %} -->
+<!--     {% endfor %} -->
+<!--   </div> -->
+<!-- </div> -->
+<section class="py-16">
+  <div class="max-w-4xl mx-auto text-center mb-12">
+    <h2 class="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
+    <p class="text-gray-600"> <strong>ZeroBadger 🦡</strong> helps you manage your budget simply and effectively.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+    
+    <!-- Step 1 -->
+    <div class="p-6 bg-white rounded-lg shadow-md">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">1. Create budget</h3>
+      <p class="text-gray-600 text-sm">
+        Define your spending limits for each category like Food, Rent, and Utilities etc...
+      </p>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="p-6 bg-white rounded-lg shadow-md">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">2. Log expenses</h3>
+      <p class="text-gray-600 text-sm">
+        Quickly log your earnings and expenses throughout the month.
+      </p>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="p-6 bg-white rounded-lg shadow-md">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">3. Track Your Progress</h3>
+      <p class="text-gray-600 text-sm">
+        See how you are performing against your plan in real time.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="py-20 px-4 text-center bg-gray-50">
+  <h2 class="text-3xl font-bold text-gray-900 mb-8">Why Choose ZeroBadger?</h2>
+
+  <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="text-lg font-semibold mb-2">Simple by Default</h3>
+      <p class="text-gray-600 text-sm">
+        No clutter. Only the tools you need to manage your finances wisely.
+      </p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="text-lg font-semibold mb-2">Serious Results</h3>
+      <p class="text-gray-600 text-sm">
+        We are building on top of our simple core to make managing finances accesible to everyone
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-black text-white text-center">
+  <h2 class="text-3xl font-bold mb-4">Ready to take control of your money?</h2>
+  <a href="{% url 'account_signup' %}"
+     class="button bg-white text-black hover:bg-gray-200 mt-4">
+    Create Your Free Account
+  </a>
+</section>
+{% endblock %}

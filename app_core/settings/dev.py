@@ -11,6 +11,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 INSTALLED_APPS += [
     "django_browser_reload",
+    "django_extensions",
 ]
 
 MIDDLEWARE += [
@@ -21,3 +22,6 @@ try:
     from .local import *
 except ImportError:
     pass
+
+
+ACCOUNT_RATE_LIMIT = False

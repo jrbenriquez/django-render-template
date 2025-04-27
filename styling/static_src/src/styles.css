@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold;
+  }
+  p {
+    @apply text-base leading-relaxed;
+  }
+  h1 {
+    @apply text-3xl font-bold;
+  }
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+}
+@layer components {
+  .button {
+    @apply inline-block bg-black text-white hover:bg-white hover:text-black font-semibold py-3 px-6 rounded-lg shadow-md transition;
+  }
+
+  input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    textarea,
+    select {
+      @apply w-full rounded-md border border-gray-300 bg-white shadow-sm focus:border-black focus:ring-1 focus:ring-black text-sm py-2 px-3;
+    }
+
+    label {
+      @apply block text-sm font-medium text-gray-700 mb-1;
+    }
+
+}

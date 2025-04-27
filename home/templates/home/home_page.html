@@ -6,11 +6,67 @@
 
 
 {% block content %}
-<div class="main-home-div mb-8">
-  <center>{% image page.self_photo width-75 format-jpeg jpegquality-100 class="self-img" %}</center>
-  <center>{{page.self_text}}</center>
-</div>
+<!-- HERO SECTION --!>
+<section class="text-center py-20 px-4">
+  <h1 class="text-4xl font-extrabold mb-4 text-gray-900">Plan Your Budget</h1>
+  <p class="max-w-2xl mx-auto text-gray-600 mb-6">
+    Organize your finances by making sure every peso is accounted for.</br>
+    Stay on top of your spending, saving, and goals.
+  </p>
+  <a href="{% url 'account_signup' %}"
+     class="button">
+    Start Budgeting
+  </a>
+</section>
 
-{% include 'blog/partials/blog_page_list.html' with blogpages=blogpages %}
+<!-- HOW IT HELPS --!>
+<section class="py-16 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">How ZeroBadger Helps You</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Designed to make budgeting intuitive, not overwhelming.  
+        Focus on what matters, one peso at a time.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Track Easily</h3>
+        <p class="text-gray-600">
+          Log your expenses and income in seconds, no spreadsheets needed.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Plan Clearly</h3>
+        <p class="text-gray-600">
+          Set budgets and see your real-time progress toward financial goals.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Spend Wisely</h3>
+        <p class="text-gray-600">
+          Understand your spending patterns and stay aligned with your priorities.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION --!>
+<section class="py-20 bg-white text-center">
+  <h2 class="text-3xl font-bold text-gray-900 mb-6">Ready to Start?</h2>
+  <p class="text-gray-600 mb-8">
+    Begin your journey to clearer, more confident finances today.
+  </p>
+  <a href="{% url 'account_signup' %}"
+     class="button">
+    Create Your Free Account
+  </a>
+</section>
+
+<!-- {% include 'blog/partials/blog_page_list.html' with blogpages=blogpages %} -->
 
 {% endblock content %}

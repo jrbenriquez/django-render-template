@@ -1,11 +1,13 @@
 from django.db import models
-from django.core.paginator import Paginator
 
 from wagtail.models import Page
+from wagtail import blocks
+from wagtail.fields import StreamField
 from wagtail.fields import RichTextField
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-
-from blog.models import BlogIndexPage
+from wagtail.admin.panels import FieldPanel
+from wagtail.admin.panels import MultiFieldPanel
+from wagtailcodeblock.blocks import CodeBlock
+from wagtail.images.blocks import ImageBlock
 
 
 class HomePage(Page):
@@ -49,3 +51,18 @@ class HomePage(Page):
         ),
         FieldPanel("body"),
     ]
+
+class HowItWorksPage(Page):
+
+    body = StreamField([
+            ('heading', blocks.CharBlock(form_classname="title")),
+            ('paragraph', blocks.RichTextBlock()),
+            ('image', ImageBlock()),
+            ('code', CodeBlock(label='Code Block')),
+            ("rich_text", blocks.RichTextBlock(features=["bold", "italic", "link", "ul", "ol", "h2", "h3"])),
+        ], use_json_field=True, null=True, blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel("body"),
+    ]
+

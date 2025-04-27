@@ -26,6 +26,9 @@ wagtailcodeblock = "^1.29.0.2"
 django-allauth = "^65.7.0"
 
 
+[tool.poetry.group.dev.dependencies]
+django-extensions = "^4.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
