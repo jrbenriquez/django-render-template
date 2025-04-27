@@ -1,0 +1,37 @@
+{% extends "account/base.html" %}
+{% load i18n static %}
+
+{% block title %}
+  Logout
+{% endblock %}
+
+{% block header %}{% endblock header %}
+
+{% block card_title %}
+<center>
+  <a href="/">
+    <img src="{% static 'img/icon.svg' %}" class="h-16 w-auto mb-6" alt="ZeroBadger logo" />
+    Sign Out
+  </a>
+</center>
+{% endblock %}
+
+{% block inner_content %}
+<form method="post" action="{% url 'account_logout' %}" class="space-y-6">
+  {% csrf_token %}
+
+  <p class="text-center text-gray-700">
+    Are you sure you want to sign out?
+  </p>
+
+  <button type="submit" class="button w-full">
+    Confirm Sign Out
+  </button>
+
+  <div class="text-center text-sm text-gray-600 mt-4">
+    <a href="{% url 'dashboard' %}" class="hover:underline text-black">
+      Cancel and return to Dashboard
+    </a>
+  </div>
+</form>
+{% endblock inner_content %}

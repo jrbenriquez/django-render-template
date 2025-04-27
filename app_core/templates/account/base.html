@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title_suffix %}
+   &nbsp;-&nbsp;ZeroBadger
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex flex-col justify-center items-center px-4 text-gray-900">
+    <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-md space-y-6">
+        <div class="text-center">
+            <h1 class="text-2xl font-semibold">{% block card_title %}{% endblock card_title %}</h1>
+        </div>
+
+        <div>
+            {% block inner_content %}
+            {% endblock inner_content %}
+        </div>
+
+        <div class="border-t pt-4 text-sm text-center text-gray-600">
+            {% block footer %}
+            {% endblock footer %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block header %}
+{% endblock header %}

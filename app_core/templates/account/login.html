@@ -1,0 +1,67 @@
+{% extends "account/base.html" %}
+{% load i18n static %}
+
+{% block header %}
+{% endblock header %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block card_title %}
+    <center>
+      <a href="/">
+        <img src="{% static 'img/icon.svg' %}"
+             class="h-16 w-auto mb-6"
+             alt="ZeroBadger logo" />
+        Log in
+      </a>
+    </center>
+{% endblock %}
+
+{% block inner_content %}
+<form method="post" action="{% url 'account_login' %}" class="space-y-6">
+  {% csrf_token %}
+  {% if form.non_field_errors %}
+    <div class="text-sm text-red-600 text-center mb-4">
+      {% for error in form.non_field_errors %}
+        <p>{{ error }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+{% for field in form %}
+  {% if field.field.widget.input_type == "checkbox" %}
+    <div class="flex items-center space-x-3">
+      {{ field.label_tag }}
+      {{ field }}
+    </div>
+  {% else %}
+    <div>
+      {{ field.label_tag }}
+      {{ field }}
+      {% if field.errors %}
+        <p class="text-sm text-red-600 mt-1">{{ field.errors|striptags }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endfor %}
+
+  <button type="submit" class="button w-full">
+    Log In
+  </button>
+
+  <div class="text-center text-sm text-gray-600 mt-4">
+    Don't have an account yet?
+    <a href="{% url 'account_signup' %}" class="font-semibold text-black hover:underline">
+      Sign Up
+    </a>
+  </div>
+
+  <div class="text-center text-sm text-gray-600 mt-2">
+    <a href="{% url 'account_reset_password' %}" class="hover:underline">
+      Forgot Password?
+    </a>
+  </div>
+</form>
+{% endblock inner_content %}
