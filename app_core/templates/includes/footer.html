@@ -3,7 +3,7 @@
 <div class="bottom-0 w-full">
   <hr class="pb-2 mt-8" />
   <footer class="text-xs max-w-1/3 mx-auto flex justify-center items-center space-x-4">
-      {% with linkedin_url=settings.base.NavigationSettings.linkedin_url github_url=settings.base.NavigationSettings.github_url x_url=settings.base.NavigationSettings.x_url %}
+      {% with linkedin_url=settings.home.NavigationSettings.linkedin_url github_url=settings.home.NavigationSettings.github_url x_url=settings.home.NavigationSettings.x_url %}
           {% if linkedin_url or github_url or x_url %}
             {% if github_url %}
             <a class="px-4" href="{{ github_url }}">

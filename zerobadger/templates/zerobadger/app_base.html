@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Dashboard - ZeroBadger
+{% endblock %}
+{% block body %}
+<body class="{% block body_class %}{% endblock %}">
+    <header class="bg-white shadow">
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-xl font-bold text-gray-900">
+          <a href="{% url 'dashboard' %}">ZeroBadger</a>
+        </div>
+        <nav class="space-x-6 text-gray-700 text-sm">
+          <a href="#" class="hover:text-black">Dashboard</a>
+          <a href="#" class="hover:text-black">Budgets</a>
+          <a href="#" class="hover:text-black">Expenses</a>
+        <a href="{% url 'account_logout' %}" class="hover:text-black">Logout</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container mx-auto py-6">
+      {% block content %}
+      {% endblock %}
+    </main>
+
+    {% block extra_js %}
+    {% endblock %}
+</body>
+{% endblock body %}
+

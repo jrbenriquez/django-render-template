@@ -11,7 +11,7 @@
   {% endfor %} {% if request.user.is_authenticated %}
   <a
     class="group relative inline-flex items-center overflow-hidden rounded-lg bg-black px-8 py-2 text-white focus:ring-3 focus:outline-hidden"
-    href="#"
+    href="{% url 'dashboard' %}"
   >
     <span class="absolute -end-full transition-all group-hover:end-4">
       <svg

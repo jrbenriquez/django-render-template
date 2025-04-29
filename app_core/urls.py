@@ -15,6 +15,7 @@ urlpatterns = [
     # path("search/", search_views.search, name="search"),
     path("blog/", include("blog.urls")),
     path('accounts/', include('allauth.urls')),
+    path("app/", include("zerobadger.urls"))
 ]
 
 
@@ -37,3 +38,4 @@ urlpatterns = urlpatterns + [
     # of your site, rather than the site root:
     #    path("pages/", include(wagtail_urls)),
 ]
+

@@ -2,12 +2,12 @@ from django import template
 
 from wagtail.models import Site
 
-from base.models import FooterText
+from home.models import FooterText
 
 register = template.Library()
 
 
-@register.inclusion_tag("base/includes/footer_text.html", takes_context=True)
+@register.inclusion_tag("zerobadger/includes/footer_text.html", takes_context=True)
 def get_footer_text(context):
     footer_text = context.get("footer_text", "")
 

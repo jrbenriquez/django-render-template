@@ -34,11 +34,12 @@ SECRET_KEY = env("SECRET_KEY")
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+AUTH_USER_MODEL = 'zerobadger.User'
 
 # Application definition
 
 INSTALLED_APPS = [
-    "base",
+    "zerobadger",
     "blog",
     "home",
     "search",
@@ -221,7 +222,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/app/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
 
 EMAIL_BACKENDS = "django.core.mail.backends.console.EmailBackend"
