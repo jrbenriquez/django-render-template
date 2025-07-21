@@ -18,103 +18,103 @@ from wagtailcodeblock.blocks import CodeBlock
 from wagtail.images.blocks import ImageBlock
 
 
-class BlogIndexPage(Page):
-    intro = RichTextField(blank=True)
+# class BlogIndexPage(Page):
+#     intro = RichTextField(blank=True)
 
-    def get_context(self, request):
-        context = super().get_context(request)
-        children = self.get_children().live().order_by("-first_published_at")
-        context["blogpages"] = children
-        return context
+#     def get_context(self, request):
+#         context = super().get_context(request)
+#         children = self.get_children().live().order_by("-first_published_at")
+#         context["blogpages"] = children
+#         return context
 
-    content_panels = Page.content_panels + [
-        FieldPanel('intro')
-    ]
-
-
-class BlogPostTag(TaggedItemBase):
-    content_object = ParentalKey(
-        'BlogPostPage',
-        related_name='tagged_items',
-        on_delete=models.CASCADE
-    )
-
-class BlogPostPage(Page):
-
-    gallery_images: QuerySet
-
-    date = models.DateField("Post date")
-    intro = models.CharField(max_length=250)
-    content = StreamField([
-            ('heading', blocks.CharBlock(form_classname="title")),
-            ('paragraph', blocks.RichTextBlock()),
-            ('image', ImageBlock()),
-            ('code', CodeBlock(label='Code Block'))
-        ], use_json_field=True, null=True, blank=True)
-
-    authors = ParentalManyToManyField("blog.Author", blank=True)
-
-    tags = ClusterTaggableManager(through=BlogPostTag)
-
-    def main_image(self):
-        record = self.gallery_images.first()
-        if record:
-            return record.image
-        return None
+#     content_panels = Page.content_panels + [
+#         FieldPanel('intro')
+#     ]
 
 
-    search_fields = Page.search_fields + [
-        index.SearchField('intro'),
-        index.SearchField('content'),
-    ]
+# class BlogPostTag(TaggedItemBase):
+#     content_object = ParentalKey(
+#         'BlogPostPage',
+#         related_name='tagged_items',
+#         on_delete=models.CASCADE
+#     )
 
-    content_panels = Page.content_panels + [
-        MultiFieldPanel([
-            FieldPanel('date'),
-            FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
-            FieldPanel('tags'),
-        ], heading="Blog information"),
-        FieldPanel('intro'),
-        FieldPanel('content'),
-        InlinePanel('gallery_images', label="Gallery images"),
-    ]
+# class BlogPostPage(Page):
 
+#     gallery_images: QuerySet
 
-class BlogPostGalleryImage(Orderable):
-    page = ParentalKey(BlogPostPage, on_delete=models.CASCADE, related_name="gallery_images")
-    image = models.ForeignKey("wagtailimages.Image", on_delete=models.CASCADE, related_name="+")
-    caption = models.CharField(max_length=250, blank=True)
+#     date = models.DateField("Post date")
+#     intro = models.CharField(max_length=250)
+#     content = StreamField([
+#             ('heading', blocks.CharBlock(form_classname="title")),
+#             ('paragraph', blocks.RichTextBlock()),
+#             ('image', ImageBlock()),
+#             ('code', CodeBlock(label='Code Block'))
+#         ], use_json_field=True, null=True, blank=True)
 
-    panels = [
-        FieldPanel("image"),
-        FieldPanel("caption"),
-    ]
+#     authors = ParentalManyToManyField("blog.Author", blank=True)
 
+#     tags = ClusterTaggableManager(through=BlogPostTag)
 
-@register_snippet
-class Author(models.Model):
-
-    name = models.CharField(max_length=255)
-    email = models.EmailField(null=True)
-    author_image = models.ForeignKey("wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
-
-    panels = [
-        FieldPanel("name"),
-        FieldPanel("email"),
-        FieldPanel("author_image"),
-    ]
-
-    def __str__(self):
-        return self.name
+#     def main_image(self):
+#         record = self.gallery_images.first()
+#         if record:
+#             return record.image
+#         return None
 
 
-class BlogTagPage(Page):
-    def get_context(self, request):
-        tag = request.GET.get("tag")
-        blogpages = BlogPostPage.objects.filter(tags__name=tag)
-        context = super().get_context(request)
-        context["blogpages"] = blogpages
-        return context
+#     search_fields = Page.search_fields + [
+#         index.SearchField('intro'),
+#         index.SearchField('content'),
+#     ]
+
+#     content_panels = Page.content_panels + [
+#         MultiFieldPanel([
+#             FieldPanel('date'),
+#             FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+#             FieldPanel('tags'),
+#         ], heading="Blog information"),
+#         FieldPanel('intro'),
+#         FieldPanel('content'),
+#         InlinePanel('gallery_images', label="Gallery images"),
+#     ]
+
+
+# class BlogPostGalleryImage(Orderable):
+#     page = ParentalKey(BlogPostPage, on_delete=models.CASCADE, related_name="gallery_images")
+#     image = models.ForeignKey("wagtailimages.Image", on_delete=models.CASCADE, related_name="+")
+#     caption = models.CharField(max_length=250, blank=True)
+
+#     panels = [
+#         FieldPanel("image"),
+#         FieldPanel("caption"),
+#     ]
+
+
+# @register_snippet
+# class Author(models.Model):
+
+#     name = models.CharField(max_length=255)
+#     email = models.EmailField(null=True)
+#     author_image = models.ForeignKey("wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
+
+#     panels = [
+#         FieldPanel("name"),
+#         FieldPanel("email"),
+#         FieldPanel("author_image"),
+#     ]
+
+#     def __str__(self):
+#         return self.name
+
+
+# class BlogTagPage(Page):
+#     def get_context(self, request):
+#         tag = request.GET.get("tag")
+#         blogpages = BlogPostPage.objects.filter(tags__name=tag)
+#         context = super().get_context(request)
+#         context["blogpages"] = blogpages
+#         return context
 
 
 

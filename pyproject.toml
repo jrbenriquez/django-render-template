@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "zerobadger"
+name = "appname"
 version = "0.1.0"
 description = "Minimalist Zero Based Budgeting"
 authors = ["John Rei Enriquez <johnrei.enriquez@gmail.com>"]
 readme = "README.md"
-packages = [{include = "zerobadger"}]
+packages = [{include = "appname"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"

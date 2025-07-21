@@ -34,12 +34,12 @@ SECRET_KEY = env("SECRET_KEY")
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-AUTH_USER_MODEL = 'zerobadger.User'
+AUTH_USER_MODEL = 'appname.User'
 
 # Application definition
 
 INSTALLED_APPS = [
-    "zerobadger",
+    "appname",
     "blog",
     "home",
     "search",

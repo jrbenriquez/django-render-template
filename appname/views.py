@@ -7,4 +7,4 @@ from django.shortcuts import render
 
 @login_required
 def dashboard(request):
-    return render(request, 'zerobadger/dashboard.html')
+    return render(request, 'appname/dashboard.html')

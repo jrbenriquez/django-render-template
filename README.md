@@ -1,75 +1,78 @@
-# ZeroBadger
+# Django App Template
 
-**ZeroBadger** is a minimalist budgeting tool built around the concept of **Zero-Based Budgeting (ZBB)** — a proven strategy that gives every peso a purpose.
-
-## 💸 What is Zero-Based Budgeting?
-
-Zero-Based Budgeting means assigning **every peso of your income** to a specific job — whether that's an expense, savings, or a financial goal. By the end of each budgeting cycle, your income minus expenses should equal **₱0**, ensuring that all money is accounted for with intention.
-
-Rather than leaving “leftover” money untracked, ZeroBadger helps users clearly see where every peso goes and encourages better financial awareness.
-
-## 🛠 What ZeroBadger Offers
-
-- Clean, distraction-free interface
-- Dual budgeting and spending views (budget-first or simple expense tracking)
-- Gamified nudges to help users fully allocate their income
-- Summary breakdown of available funds
-- Support for both beginners and detailed budgeters
-
-Whether you're just trying to stay on top of spending, or proactively planning every detail of your budget — ZeroBadger makes it approachable and intuitive.
-
-## 🐍 Tech Stack
-
-- **Backend**: Django
-- **Frontend**: Tailwind CSS, Vanilla JS
-- **Design System**: Inspired by HyperUI
+This is a minimalist Django project template designed for fast development and clear structure. It includes a modern frontend stack and comes with a basic setup to get started quickly.
 
 ---
 
-> ZeroBadger is built with simplicity and clarity in mind — so budgeting becomes a habit, not a chore.
+## 🚀 Features
 
-## Quick Setup Guide
+- Django backend with sensible defaults  
+- Tailwind CSS for utility-first styling  
+- Vanilla JavaScript for frontend interactivity  
+- Clean project structure for easy customization  
+- Poetry for dependency and environment management  
+
+---
+
+## 🧱 Tech Stack
+
+- **Backend**: [Django](https://www.djangoproject.com/)  
+- **Frontend**: [Tailwind CSS](https://tailwindcss.com/), Vanilla JS  
+- **Package Management**: [Poetry](https://python-poetry.org/)  
+- **Design Inspiration**: [HyperUI](https://www.hyperui.dev/) components (optional)
+
+---
+
+## ⚙️ Quick Setup Guide
 
 ### 1. Clone the Repository
-```sh
+```bash
 git clone <your-repo-url>
 cd <your-project-folder>
 ```
 
 ### 2. Install Dependencies
-Ensure **Poetry** is installed. If not, install it first:
-```sh
+Ensure [Poetry](https://python-poetry.org/) is installed:
+```bash
 curl -sSL https://install.python-poetry.org | python3 -
 ```
+
 Then install project dependencies:
-```sh
+```bash
 poetry install
 ```
 
 ### 3. Apply Migrations
-```sh
+```bash
 poetry run python manage.py migrate
 ```
 
 ### 4. Create a Superuser
-```sh
+```bash
 poetry run python manage.py createsuperuser
 ```
 
 ### 5. Run the Development Server
-```sh
+```bash
 poetry run python manage.py runserver
 ```
-Now, visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
 
-## Additional Commands
+Now open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
+
+---
+
+## 🛠️ Common Commands
 
 ### Collect Static Files
-```sh
+```bash
 poetry run python manage.py collectstatic
 ```
 
-### Load Sample Data (if available)
-```sh
+### Load Fixture Data (if applicable)
+```bash
 poetry run python manage.py loaddata <fixture-file>
 ```
+
+---
+
+This template is intended to be a clean foundation for building Django apps of any kind. You can extend it with additional packages, apps, and frontend tooling as needed.

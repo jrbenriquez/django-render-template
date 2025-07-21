@@ -15,7 +15,7 @@ urlpatterns = [
     # path("search/", search_views.search, name="search"),
     path("blog/", include("blog.urls")),
     path('accounts/', include('allauth.urls')),
-    path("app/", include("zerobadger.urls"))
+    path("app/", include("appname.urls"))
 ]
 
 
